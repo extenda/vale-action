@@ -63,6 +63,11 @@ export async function get(
   // NOTE: We need to do this first because we may not have a local config file
   // to read the `StylesPath` from.
   const config = core.getInput('config');
+
+  // Find .vale.ini in the directory. Repo root is top most search dir
+  // If found, use the config file.
+  // If not found download default from config param
+
   if (config !== '') {
     logIfDebug(`Downloading external config '${config}' ...`);
     await request
